@@ -10,7 +10,34 @@
 	<script>
 		function secondHighest(arr) {
 			//Write your code here
+			if (arr.length <= 1) {
+				return -Infinity;
+			}
 			
+			// Initialize variables to keep track of the highest and second-highest values
+			let highest = -Infinity;
+			let secondHighest = -Infinity;
+			
+			// Iterate through the array
+			for (let i = 0; i < arr.length; i++) {
+				// If the current element is greater than the highest, update both highest and secondHighest
+				if (arr[i] > highest) {
+					secondHighest = highest;
+					highest = arr[i];
+				}
+				// If the current element is greater than the secondHighest but not equal to the highest, update secondHighest
+				else if (arr[i] > secondHighest && arr[i] !== highest) {
+					secondHighest = arr[i];
+				}
+			}
+			
+			// If no distinct second-highest element is found, return -Infinity
+			if (secondHighest === -Infinity) {
+				return -Infinity;
+			}
+			
+			// Return the second-highest element
+			return secondHighest;
 		}
 
 		function Main() {
